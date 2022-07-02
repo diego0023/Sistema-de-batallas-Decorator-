@@ -3,3 +3,7 @@ from models.daisy import Daisy
 from models.kirby import Kirby
 from models.shyguy import ShyGuy
 from models.toad import Toad
+from models.personajeDecorator import PersonajeDecorator
+from models.espadaDecorator import EspadaDecorator
+from models.hachaDecorator import HachaDecorator
+from models.posionDecorator import PosionDecorator

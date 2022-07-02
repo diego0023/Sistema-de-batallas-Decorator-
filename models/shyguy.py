@@ -8,7 +8,6 @@ class ShyGuy(Personaje):
         self.__atq: float = 40
         self.__def: float = 50
         self.__speed: float = 30
-        self.__activo: bool = False  # Si se esta defendindo
 
     def get_hp(self) -> float:
         return self.__hp
@@ -22,13 +21,6 @@ class ShyGuy(Personaje):
     def get_speed(self) -> float:
         return self.__speed
 
-    def is_active(self) -> bool:
-        return self.__activo
-
-    def off_active(self):
-        self.__activo = True
-        pass
-
     def reduce_hp(self, damage: float):
         vida = self.__hp - damage
         if vida < 0:
@@ -36,17 +28,14 @@ class ShyGuy(Personaje):
         else:
             self.__hp = vida
 
-    def atacar(self, enemy_activo: bool, enemy_def: float) -> float:
-        if enemy_activo:
-            # Se defiente
-            danio = self.__atq - enemy_def
-            if danio < 0:
-                danio = 0
+    def atacar(self,  enemy_def: float) -> float:
+        danio = self.__atq - enemy_def
+        if danio < 0:
+            danio = 0
         else:
             danio = self.__atq
-
         return danio
 
-    def defender(self):
-        self.__activo = True
-        pass
+    def set_hp(self, hp: float):
+        self.__hp = self.__hp + hp
+        return f'Shyguy tiene {self.__hp} de vida'
